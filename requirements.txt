@@ -1,0 +1,9 @@
+streamlit
+torch
+transformers
+sentencepiece
+nltk
+textblob
+numpy
+scikit-learn
+protobuf
