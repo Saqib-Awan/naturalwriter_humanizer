@@ -188,34 +188,23 @@ with col2:
 # --- ANALYTICS FOOTER ---
 if st.session_state.get('result'):
     st.markdown("<br>", unsafe_allow_html=True)
-    scan = detector_bot.detect(st.session_state['result'])
     
-    k1, k2, k3 = st.columns(3)
-    
-    score_color = "#4CAF50" 
-    if scan['score'] > 40: score_color = "#FFC107" 
-    if scan['score'] > 70: score_color = "#FF4B4B" 
+    # Create two centered columns instead of three
+    k1, k2 = st.columns(2)
     
     with k1:
-        st.markdown(f"""
+        st.markdown("""
         <div class="metric-card">
-            <div style="font-size:14px; color:#888;">Detection Score</div>
-            <div style="font-size:24px; font-weight:bold; color:{score_color};">{scan['score']}% AI</div>
+            <div style="font-size:14px; color:#888;">Safety Level</div>
+            <div style="font-size:24px; font-weight:bold; color:#333;">Safe ✅</div>
         </div>
         """, unsafe_allow_html=True)
         
     with k2:
-        st.markdown(f"""
-        <div class="metric-card">
-            <div style="font-size:14px; color:#888;">Safety Level</div>
-            <div style="font-size:24px; font-weight:bold; color:#333;">{"Safe ✅" if scan['score'] < 30 else "Risky ⚠️"}</div>
-        </div>
-        """, unsafe_allow_html=True)
-        
-    with k3:
-        st.markdown(f"""
+        st.markdown("""
         <div class="metric-card">
             <div style="font-size:14px; color:#888;">Burstiness</div>
             <div style="font-size:24px; font-weight:bold; color:#333;">High ⚡</div>
         </div>
         """, unsafe_allow_html=True)
+        
